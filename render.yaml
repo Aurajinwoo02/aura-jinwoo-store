@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: aura-jinwoo-store
+    runtime: docker
+    plan: starter
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3000
+      - key: DB_PATH
+        value: /var/data/store.db
+      - key: JWT_SECRET
+        generateValue: true
+      - key: ADMIN_EMAIL
+        value: s07273145@gmail.com
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: STORE_UPI_ID
+        sync: false
+    disk:
+      name: aura-store-data
+      mountPath: /var/data
+      sizeGB: 1
